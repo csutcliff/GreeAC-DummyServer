@@ -1,5 +1,5 @@
-FROM microsoft/dotnet:2.2-sdk
-MAINTAINER bernhard@emtek.at
+FROM mcr.microsoft.com/dotnet/sdk:8.0
+MAINTAINER chris@sutcliff.me
 WORKDIR /app
 
 # copy csproj and restore as distinct layers
@@ -11,7 +11,7 @@ COPY . ./
 RUN dotnet publish -c Release -o out
 
 EXPOSE 5000
-ENV DOMAIN_NAME=emtek.at
+ENV DOMAIN_NAME=example.com
 ENV EXTERNAL_IP=172.16.1.1
 
 ENTRYPOINT ["dotnet", "out/DummyServer.dll"]
